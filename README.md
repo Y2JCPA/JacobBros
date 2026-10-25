@@ -41,10 +41,20 @@ Add one line to any game's `index.html`, with the game's `id` from `data/games.j
 <script src="https://y2jcpa.github.io/JacobBros/badge.js" data-game="dreidel" defer></script>
 ```
 
-This puts a small **? Jacob Bros: More games ▶** button in the corner. It links to the hub with `?from=dreidel`, and the hub then welcomes the player back and marks related games **NEXT UP**.
+This puts a small **By Jacob Bros · More games ▶** badge in the corner (in Hebrew on Hebrew pages). It links to the hub with `?from=dreidel`, and the hub then welcomes the player back and marks related games **NEXT UP**.
 
-- Use `data-position="bottom-right"` (or `top-left` / `top-right`) if the default corner covers your game's controls.
-- To put the button inside your own menu or game-over screen, add `<div id="jacobbros-badge"></div>` where you want it.
+Options, as attributes on the script tag:
+
+| Attribute | What it does |
+|---|---|
+| `data-position` | `bottom-left` (default), `bottom-right`, `top-left` or `top-right` |
+| `data-above` | a selector for a bar along the bottom, like a phone tab bar (`".mobile-nav"`); the badge sits above it while it's showing |
+| `data-show-with` | a selector for your start screen (`"#profile-screen"`); the badge only shows while it's visible, so it never covers gameplay |
+| `data-lang` | `en` or `he`; by default it follows `<html lang>` |
+
+To put the badge inside your own menu instead, add `<div id="jacobbros-badge"></div>` where you want it.
+
+Every Jacob Bros game and app should carry the badge.
 
 ## Shareable filter links
 
