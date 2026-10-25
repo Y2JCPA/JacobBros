@@ -2,7 +2,11 @@
 
 Torah games, study guides and builds by five brothers, all in one place.
 
-The site is an original 8-bit world. It has the five bros as pixel characters, `?` blocks that pop out Torah facts, and a catalog of every game and study site that you can filter by **holiday**, **age**, **type** and **brother**.
+The site is a little platformer set in the Old City of Yerushalayim. Pick one of the five bros, walk past the Kotel, and jump up into a **pomegranate block** to open a game. The world is split into areas (Games, Study, Apps, Coming Soon), and every game in `data/games.js` gets its own block automatically. Brick blocks pop out coins and Torah facts.
+
+Under the game there's a plain list of every world, filterable by **holiday**, **age**, **type** and **brother**. The whole site works in **English and Hebrew**. Use the toggle in the top corner, or link with `?lang=he`.
+
+**Controls:** ← → (or A/D) to move and Space (or ↑) to jump on a computer. On phones and tablets there's a joystick and a JUMP button.
 
 **Live site:** https://y2jcpa.github.io/JacobBros/ (once GitHub Pages is turned on, see below)
 
@@ -10,10 +14,14 @@ The site is an original 8-bit world. It has the five bros as pixel characters, `
 
 | Path | What it is |
 |---|---|
-| `index.html`, `css/`, `js/` | The site. Plain HTML/CSS/JS with no build step. |
+| `index.html`, `css/` | The page. Plain HTML/CSS/JS with no build step. |
+| `js/game.js` | The playable world: physics, controls, level layout, block pop-ups. |
+| `js/art.js` | The Old City pixel art (Kotel, walls, Hurva, trees, tiles, blocks), drawn in code. |
+| `js/core.js` | English/Hebrew text, the Hebrew year, coins. |
+| `js/app.js` | The list of worlds and the Meet the Bros cards. |
 | `data/games.js` | **Every game, study guide and app.** Add yours here. |
 | `data/brothers.js` | **The five bros**: name, bio, fun facts, pixel look. |
-| `assets/bros/` | The bros' pixel sprites, drawn by `tools/make-bros.js`. |
+| `assets/bros/` | The bros' sprites: a front portrait and side-view walk/jump frames, drawn by `tools/make-bros.js`. |
 | `badge.js` | The "More games" button that games include to link back here. |
 | `assets/shots/` | Card thumbnails. `tools/screenshot.js` regenerates them. |
 | `tools/check-data.js` | Checks the data files for mistakes. CI runs it on every pull request. |

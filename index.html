@@ -1,117 +1,120 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Jacob Bros: Torah Games</title>
-  <meta name="description" content="Torah games, study guides and builds by the five Jacob Bros, all in one place. Find something to play by holiday, age or brother.">
+  <meta name="description" content="Torah games, study guides and builds by the five Jacob Bros. Pick a brother, walk the Old City of Yerushalayim, and jump into a block to open a game.">
   <meta property="og:title" content="Jacob Bros">
   <meta property="og:description" content="Torah games, study guides and builds by five brothers, all in one place.">
-  <meta name="theme-color" content="#5c94fc">
+  <meta name="theme-color" content="#4f90e0">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;600&family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <a class="skip" href="#worlds">Skip to the games</a>
+  <a class="skip" href="#worlds" data-i18n="skip">Skip to the list of games</a>
 
-  <header class="hud" aria-label="Site status">
-    <div class="hud-cell"><span class="hud-label">COINS</span><span class="hud-value" id="hud-coins">🪙×00</span></div>
-    <div class="hud-cell"><span class="hud-label">WORLDS</span><span class="hud-value" id="hud-games">×00</span></div>
-    <div class="hud-cell"><span class="hud-label">BROS</span><span class="hud-value" id="hud-bros">×5</span></div>
-    <div class="hud-cell"><span class="hud-label">WORLD</span><span class="hud-value" id="hud-year">5787</span></div>
-  </header>
+  <section class="stage" id="play" tabindex="-1" aria-label="Jacob Bros world">
+    <div class="screen">
+      <canvas id="game" aria-hidden="true"></canvas>
 
-  <section class="hero" aria-labelledby="title">
-    <div class="sky" aria-hidden="true">
-      <div class="cloud c1"></div>
-      <div class="cloud c2"></div>
-      <div class="cloud c3"></div>
-      <div class="hill h1"></div>
-      <div class="hill h2"></div>
-      <div class="bush b1"></div>
-      <div class="bush b2"></div>
-    </div>
+      <header class="hud" aria-label="Status">
+        <div class="hud-cell"><span class="hud-label" data-i18n="hud.coins">COINS</span><span class="hud-value"><span class="hud-coin" aria-hidden="true"></span><span id="hud-coins" dir="ltr">×00</span></span></div>
+        <div class="hud-cell"><span class="hud-label" data-i18n="hud.worlds">WORLDS</span><span class="hud-value" id="hud-worlds" dir="ltr">×10</span></div>
+        <div class="hud-cell"><span class="hud-label" data-i18n="hud.world">WORLD</span><span class="hud-value" id="hud-year">5787</span></div>
+        <button class="lang-toggle" type="button" data-lang-toggle data-i18n="lang.switch" data-i18n-attr="aria-label:lang.label">עברית</button>
+      </header>
 
-    <div class="hero-inner">
-      <h1 id="title" class="title-board">
-        <span class="title-line">JACOB</span>
-        <span class="title-line">BROS<span class="title-dot">.</span></span>
-      </h1>
-      <p class="tagline">Torah games &amp; builds by five brothers</p>
-
-      <div class="blocks" id="blocks" role="group" aria-label="Question blocks. Hit one for a Torah fact.">
-        <button class="qblock" type="button" aria-label="Hit the block for a Torah fact">?</button>
-        <span class="brick" aria-hidden="true"></span>
-        <button class="qblock" type="button" aria-label="Hit the block for a Torah fact">?</button>
-        <span class="brick" aria-hidden="true"></span>
-        <button class="qblock" type="button" aria-label="Hit the block for a Torah fact">?</button>
+      <div class="select" id="select">
+        <h1 class="title-board">
+          <span class="title-line">JACOB</span>
+          <span class="title-line">BROS<span class="title-dot">.</span></span>
+        </h1>
+        <p class="tagline" data-i18n="select.tagline">Torah games &amp; builds by five brothers</p>
+        <h2 class="select-title" id="select-title" data-i18n="select.title">PICK YOUR BRO</h2>
+        <div class="pick" id="pick" role="group" aria-labelledby="select-title"></div>
+        <ol class="howto">
+          <li data-i18n="select.step1">Pick a brother</li>
+          <li><span class="rimon" aria-hidden="true"></span><span data-i18n="select.step2">Jump into a pomegranate block</span></li>
+          <li data-i18n="select.step3">Play that game!</li>
+        </ol>
+        <p class="keys" id="select-keys">← → move · SPACE jump</p>
+        <a class="to-list" href="#worlds" data-i18n="select.list">Just want the list? ↓</a>
       </div>
-      <p class="fact" id="fact" role="status" aria-live="polite">Hit a <b>?</b> block for a Torah fact!</p>
 
-      <a class="btn btn-start" href="#worlds">▶ PRESS START</a>
+      <div class="ingame" id="ingame" hidden>
+        <button class="change-bro" id="change-bro" type="button"></button>
+        <nav class="zone-tabs" id="zone-tabs" aria-label="Areas"></nav>
+      </div>
+
+      <p class="toast" id="toast" role="status" aria-live="polite" hidden></p>
+      <div class="fade" id="fade" aria-hidden="true"></div>
     </div>
 
-    <div class="bros-stage" id="bros-stage" aria-label="The five brothers. Tap one to meet him."></div>
-  </section>
+    <div class="pad" aria-hidden="true">
+      <div class="joy" id="joy"><div class="joy-knob"></div></div>
+      <button class="jump-btn" id="jump-btn" type="button" tabindex="-1">JUMP</button>
+    </div>
 
-  <div class="ground" aria-hidden="true"></div>
+    <dialog class="game-pop panel" id="game-pop" aria-labelledby="game-pop-title">
+      <div id="game-pop-body"></div>
+    </dialog>
+  </section>
 
   <main>
     <section id="worlds" class="section" aria-labelledby="worlds-title">
-      <h2 id="worlds-title" class="section-title">SELECT A WORLD</h2>
+      <h2 id="worlds-title" class="section-title" data-i18n="worlds.title">ALL WORLDS</h2>
 
       <div class="from-banner panel" id="from-banner" hidden></div>
 
       <div class="filters panel" role="search">
         <label class="search">
-          <span class="visually-hidden">Search games</span>
-          <input id="q" type="search" placeholder="Search… dreidel, Rambam, Purim" autocomplete="off">
+          <span class="visually-hidden" data-i18n="worlds.searchLabel">Search games</span>
+          <input id="q" type="search" data-i18n-attr="placeholder:worlds.search" autocomplete="off">
         </label>
-        <div class="filter-group" data-group="holiday" role="group" aria-label="Holiday"></div>
-        <div class="filter-group" data-group="age" role="group" aria-label="Age"></div>
-        <div class="filter-group" data-group="type" role="group" aria-label="Type"></div>
-        <div class="filter-group filter-bros" data-group="by" role="group" aria-label="Built by"></div>
+        <div class="filter-group" data-group="holiday" role="group"></div>
+        <div class="filter-group" data-group="age" role="group"></div>
+        <div class="filter-group" data-group="type" role="group"></div>
+        <div class="filter-group filter-bros" data-group="by" role="group"></div>
       </div>
 
       <p class="results-count" id="results-count" aria-live="polite"></p>
       <div class="grid" id="grid"></div>
       <div class="empty panel" id="empty" hidden>
-        <p class="empty-title">NO WORLDS HERE… YET!</p>
-        <p>Try another filter, or <button class="link-btn" type="button" id="clear-filters">clear them all</button>.</p>
+        <p class="empty-title" data-i18n="empty.title">NO WORLDS HERE… YET!</p>
+        <p><span data-i18n="empty.text">Try another filter, or</span> <button class="link-btn" type="button" id="clear-filters" data-i18n="empty.clear">clear them all</button>.</p>
       </div>
     </section>
 
     <section id="bros" class="section" aria-labelledby="bros-title">
-      <h2 id="bros-title" class="section-title">MEET THE BROS</h2>
-      <p class="section-sub">Five brothers, one mission: Torah that's fun to play. Tap a brother to see what he's built.</p>
+      <h2 id="bros-title" class="section-title" data-i18n="bros.title">MEET THE BROS</h2>
+      <p class="section-sub" data-i18n="bros.sub">Five brothers, one mission: Torah that's fun to play.</p>
       <div class="bro-cards" id="bro-cards"></div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="pipes" aria-hidden="true">
-      <div class="pipe p1"></div>
-      <div class="pipe p2"></div>
-      <div class="pipe p3"></div>
-    </div>
     <div class="footer-inner">
-      <p class="footer-title">THANK YOU FOR PLAYING!</p>
-      <p>Built by the Jacob Bros, l'shem Shamayim. Sources are linked inside each game wherever we could.</p>
-      <p><a href="https://github.com/Y2JCPA/JacobBros">Join the build on GitHub</a></p>
+      <p class="footer-title" data-i18n="footer.title">THANK YOU FOR PLAYING!</p>
+      <p data-i18n="footer.text">Built by the Jacob Bros, l'shem Shamayim.</p>
+      <p><a href="https://github.com/Y2JCPA/JacobBros" data-i18n="footer.join">Join the build on GitHub</a></p>
     </div>
     <div class="ground ground-footer" aria-hidden="true"></div>
   </footer>
 
   <dialog class="bro-dialog panel" id="bro-dialog" aria-labelledby="bro-dialog-name">
-    <form method="dialog"><button class="dialog-close" aria-label="Close">✕</button></form>
+    <form method="dialog"><button class="dialog-close" data-i18n-attr="aria-label:dialog.close" aria-label="Close">✕</button></form>
     <div class="bro-dialog-body" id="bro-dialog-body"></div>
   </dialog>
 
   <script src="data/games.js"></script>
   <script src="data/brothers.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/art.js"></script>
+  <script src="js/game.js" defer></script>
+  <script src="js/app.js" defer></script>
 </body>
 </html>

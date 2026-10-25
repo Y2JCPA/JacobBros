@@ -35,13 +35,16 @@ bros.forEach((b, i) => {
   if (b.github && !/^[A-Za-z0-9-]+$/.test(b.github)) err(where, "github should be just the username, e.g. \"y2jcpa\"");
   if (!b.sprite) err(where, "missing sprite (e.g. \"assets/bros/" + b.id + ".png\")");
   else if (!fs.existsSync(path.join(root, b.sprite))) err(where, `sprite ${b.sprite} does not exist. Run: node tools/make-bros.js ${b.id}`);
+  else if (!fs.existsSync(path.join(root, b.sprite.replace(/\.png$/, "-side.png")))) err(where, `side sprite for ${b.id} is missing. Run: node tools/make-bros.js ${b.id}`);
+  if (!b.he || !b.he.name) err(where, "missing he.name (Hebrew name)");
   const look = b.look || {};
   const oneOf = (field, options) => {
     if (look[field] !== undefined && !options.includes(look[field])) err(where, `look.${field} must be one of: ${options.join(", ")}`);
   };
-  oneOf("body", ["short", "tall"]);
+  oneOf("body", ["short", "muscular", "wide", "tall", "lanky"]);
   oneOf("hat", ["cap", "kippah", "fedora"]);
-  oneOf("facial", ["clean", "mustache", "beard", "full"]);
+  oneOf("facial", ["clean", "mustache", "zigzag", "pointy", "beard", "full"]);
+  oneOf("chin", ["normal", "big", "pointy"]);
   oneOf("hairStyle", ["short", "long", "curly"]);
   if (look.letter !== undefined && !/^[A-Z1-5]$/i.test(String(look.letter))) err(where, "look.letter must be one letter A-Z (or 1-5)");
   if (!look.handDrawn) {
@@ -49,7 +52,7 @@ bros.forEach((b, i) => {
     for (const c of ["cap", "shirt", "overalls", "shoes", "skin", "hair"]) {
       if (!isHex(colors[c])) err(where, `look.colors.${c} must be a hex color like "#e52521"`);
     }
-    for (const c of ["beard", "buttons", "glasses", "hat", "band"]) {
+    for (const c of ["letter", "nose", "beard", "buttons", "glasses", "hat", "band"]) {
       if (colors[c] !== undefined && !isHex(colors[c])) err(where, `look.colors.${c} must be a hex color like "#e52521"`);
     }
   }
@@ -62,6 +65,10 @@ games.forEach((g, i) => {
   if (gameIds.has(g.id)) err(where, "duplicate id");
   gameIds.add(g.id);
   for (const f of ["title", "blurb", "emoji"]) if (!g[f]) err(where, `missing ${f}`);
+  if (!g.he || !g.he.title || !g.he.blurb) err(where, "missing he.title / he.blurb (Hebrew)");
+  for (const [lbl, lang] of [[g.label, "label"], [g.he && g.he.label, "he.label"]]) {
+    if (lbl && lbl.split("\n").some((line) => line.length > 12)) err(where, `${lang} lines should be 12 characters or less so they fit above the block`);
+  }
   if (!["live", "soon"].includes(g.status)) err(where, 'status must be "live" or "soon"');
   if (g.status === "live" && !/^https?:\/\//.test(g.url || "")) err(where, "a live game needs a url starting with https://");
   if (!tags.types[g.type]) err(where, `type "${g.type}" is not in JB_TAGS.types`);

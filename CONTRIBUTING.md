@@ -4,36 +4,39 @@ Everything on the site comes from two files: `data/brothers.js` and `data/games.
 
 ## 1. Make your bro
 
-Open `data/brothers.js` and find a placeholder (`bro1` … `bro5`). Then:
+Open `data/brothers.js` and find your entry. Then:
 
-1. **Change `id` once** to something short and lowercase, like your first name (`"yaakov"`). Games point to you by this id, so don't change it again later.
-2. Fill in `name`, `title` (a fun role, like `"Level Designer"`), `bio`, `funFacts` and `github` (your GitHub username, without the @).
+1. Your entry's `id` (`yitzi`, `ovadiah`, `yaacov`, `shimshon`, `levi`) is how games point to you, so leave it as it is.
+2. Fill in `name`, `title` (a fun role, like `"Level Designer"`), `bio`, `funFacts` and `github` (your GitHub username, without the @). Put the Hebrew versions in `he: { name, title, bio, funFacts }`.
 3. Design your pixel look in `look`. Short bros are Mario-sized and tall bros are Luigi-sized:
 
 | Field | Options |
 |---|---|
-| `body` | `"short"` or `"tall"` |
+| `body` | `"short"`, `"muscular"`, `"wide"`, `"tall"` or `"lanky"` |
 | `hat` | `"cap"` (with your `letter` on it), `"kippah"` or `"fedora"` |
 | `letter` | the letter on your cap |
-| `facial` | `"clean"`, `"mustache"`, `"beard"` or `"full"` |
+| `facial` | `"clean"`, `"mustache"`, `"zigzag"`, `"pointy"`, `"beard"` or `"full"` |
+| `chin` | `"normal"`, `"big"` or `"pointy"` |
 | `hairStyle` | `"short"`, `"long"` or `"curly"` |
 | `glasses`, `peyos` | `true` or `false` |
-| `colors` | `cap`, `shirt`, `overalls`, `shoes`, `skin`, `hair`, plus optional `beard`, `buttons`, `glasses`, `hat`, `band`. Use hex colors like `"#e52521"`. |
+| `colors` | `cap`, `shirt`, `overalls`, `shoes`, `skin`, `hair`, plus optional `letter`, `nose`, `beard`, `buttons`, `glasses`, `hat`, `band`. Use hex colors like `"#e52521"`. |
 
-4. Redraw your sprite with `node tools/make-bros.js <your-id>`. It saves `assets/bros/<your-id>.png`. Add `--preview preview.png` to get a big copy to look at.
+4. Redraw your sprites with `node tools/make-bros.js <your-id>`. It saves `assets/bros/<your-id>.png` (front portrait) and `assets/bros/<your-id>-side.png` (stand, walk and jump frames for the game). Add `--preview preview.png` to get a big copy to look at.
 
-Want to draw yourself by hand instead? Save a PNG (about 23×33 pixels short, 23×39 tall, transparent background) at your `sprite` path and set `look.handDrawn: true`, so the tool won't overwrite it.
+Want to draw yourself by hand instead? Save the two PNGs with transparent backgrounds: the portrait, and a side sheet of three 23-pixel-wide frames (stand, walk, jump) facing right. Then set `look.handDrawn: true` so the tool won't overwrite them.
 
 Refresh the page to see yourself. Click your character to see your card.
 
 ## 2. Add a game
 
-Copy an entry in `data/games.js` and fill it in:
+Copy an entry in `data/games.js` and fill it in. Your game gets a block in the world automatically: live games go in the Games, Study or Apps area by `type`, and `"soon"` ones go in Coming Soon.
 
 | Field | What to put |
 |---|---|
 | `id` | short, lowercase, unique: `"purim-pictionary"` |
-| `title`, `hebrew` | display name, plus an optional Hebrew name |
+| `title` | display name |
+| `label` | the short name over the game's block in the world, 12 characters a line at most (`"GROW A\nGARDEN"`) |
+| `he` | the Hebrew `title`, `label` and `blurb` |
 | `blurb` | one or two sentences on what you do in it |
 | `url` | where to play it (`https://…`). Leave it empty while it's not live. |
 | `repo` | the GitHub repo (optional) |
@@ -42,7 +45,7 @@ Copy an entry in `data/games.js` and fill it in:
 | `type` | `"game"`, `"study"` or `"app"` |
 | `holidays` | one or more of: `year-round`, `yamim-noraim`, `sukkot`, `chanukah`, `purim`, `pesach`, `shavuot`, `tisha-bav` |
 | `ages` | one or more of: `kids`, `family`, `teens`, `adults` |
-| `by` | your brother id(s): `["yaakov"]`. Two names if you built it together. |
+| `by` | your brother id(s): `["yaacov"]`. Two names if you built it together. |
 | `status` | `"live"`, or `"soon"` for the In the Workshop list |
 
 To add a new holiday or age group, add it to `JB_TAGS` at the top of the same file first.

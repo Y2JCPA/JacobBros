@@ -2,7 +2,9 @@
  * Every game, study guide and app on the Jacob Bros site.
  *
  * To add yours, copy one entry, change the fields, and open a pull request.
- * See CONTRIBUTING.md for what each field means.
+ * See CONTRIBUTING.md for what each field means. `label` is the short name
+ * shown above the game's block in the playable world (use \n for two lines).
+ * `he` holds the Hebrew title, label and blurb.
  *
  * Tags must come from the lists in JB_TAGS below. To add a new holiday or
  * age group, add it to JB_TAGS first.
@@ -10,25 +12,25 @@
 
 window.JB_TAGS = {
   holidays: {
-    "year-round":  { label: "Year-round",    emoji: "📅" },
-    "yamim-noraim":{ label: "Yamim Noraim",  emoji: "🍎" },
-    "sukkot":      { label: "Sukkot",        emoji: "🌿" },
-    "chanukah":    { label: "Chanukah",      emoji: "🕎" },
-    "purim":       { label: "Purim",         emoji: "🎭" },
-    "pesach":      { label: "Pesach",        emoji: "🍷" },
-    "shavuot":     { label: "Shavuot",       emoji: "⛰️" },
-    "tisha-bav":   { label: "Tisha B'Av",    emoji: "🕯️" },
+    "year-round":   { label: "Year-round",   he: "כל השנה",     emoji: "📅" },
+    "yamim-noraim": { label: "Yamim Noraim", he: "ימים נוראים", emoji: "🍎" },
+    "sukkot":       { label: "Sukkot",       he: "סוכות",       emoji: "🌿" },
+    "chanukah":     { label: "Chanukah",     he: "חנוכה",       emoji: "🕎" },
+    "purim":        { label: "Purim",        he: "פורים",       emoji: "🎭" },
+    "pesach":       { label: "Pesach",       he: "פסח",         emoji: "🍷" },
+    "shavuot":      { label: "Shavuot",      he: "שבועות",      emoji: "⛰️" },
+    "tisha-bav":    { label: "Tisha B'Av",   he: "תשעה באב",    emoji: "🕯️" },
   },
   ages: {
-    "kids":   { label: "Kids",          emoji: "🧒" },
-    "family": { label: "Family",        emoji: "👨‍👩‍👧‍👦" },
-    "teens":  { label: "Teens",         emoji: "🎒" },
-    "adults": { label: "Adults",        emoji: "📚" },
+    "kids":   { label: "Kids",   he: "ילדים",   emoji: "🧒" },
+    "family": { label: "Family", he: "משפחה",   emoji: "👨‍👩‍👧‍👦" },
+    "teens":  { label: "Teens",  he: "נוער",    emoji: "🎒" },
+    "adults": { label: "Adults", he: "מבוגרים", emoji: "📚" },
   },
   types: {
-    "game":  { label: "Games",         emoji: "🎮" },
-    "study": { label: "Study guides",  emoji: "📜" },
-    "app":   { label: "Apps",          emoji: "📱" },
+    "game":  { label: "Games",        he: "משחקים",      emoji: "🎮" },
+    "study": { label: "Study guides", he: "מדריכי לימוד", emoji: "📜" },
+    "app":   { label: "Apps",         he: "אפליקציות",   emoji: "📱" },
   },
 };
 
@@ -36,7 +38,13 @@ window.JB_GAMES = [
   {
     id: "dreidel",
     title: "Mack-a-bee Dreidel",
+    label: "DREIDEL",
     blurb: "Spin with Mack the bee at a felt poker table. Up to 8 players, Chanukah trivia from real sources, and 15 dreidel skins to unlock.",
+    he: {
+      title: "הסביבון של מק",
+      label: "סביבון",
+      blurb: "מסובבים עם מק הדבורה סביב שולחן לבד ירוק. עד 8 שחקנים, טריוויה של חנוכה ממקורות אמיתיים ו־15 סביבונים לפתוח.",
+    },
     url: "https://y2jcpa.github.io/Dreidel/",
     repo: "https://github.com/Y2JCPA/Dreidel",
     emoji: "🕎",
@@ -50,8 +58,13 @@ window.JB_GAMES = [
   {
     id: "beit-hamikdash",
     title: "Avodah: Beit HaMikdash",
-    hebrew: "עבודה",
+    label: "AVODAH",
     blurb: "Walk the Beit HaMikdash in 3D as a young Kohen and do a full day of the Avodah, in the order of Mishnah Tamid.",
+    he: {
+      title: "עבודה: בית המקדש",
+      label: "עבודה",
+      blurb: "מסתובבים בבית המקדש בתלת־ממד בתור כהן צעיר ועושים יום שלם של עבודה, לפי סדר משנה תמיד.",
+    },
     url: "https://y2jcpa.github.io/beit-hamikdash/",
     repo: "https://github.com/Y2JCPA/beit-hamikdash",
     emoji: "🏛️",
@@ -65,8 +78,13 @@ window.JB_GAMES = [
   {
     id: "ad-dlo-yada",
     title: "Ad D'lo Yada",
-    hebrew: "עד דלא ידע",
+    label: "AD D'LO\nYADA",
     blurb: "Baruch Mordechai or Arur Haman? Ten levels in the palace of Shushan, and each one gets blurrier than the last.",
+    he: {
+      title: "עד דלא ידע",
+      label: "עד דלא\nידע",
+      blurb: "ברוך מרדכי או ארור המן? עשרה שלבים בארמון שושן, וכל שלב מטושטש יותר מהקודם.",
+    },
     url: "",
     repo: "https://github.com/Y2JCPA/ad-dlo-yada",
     emoji: "🎭",
@@ -80,7 +98,13 @@ window.JB_GAMES = [
   {
     id: "purim-pictionary",
     title: "Purim Pictionary",
+    label: "PURIM\nDRAW",
     blurb: "A multiplayer drawing and guessing game full of Megillah words. Grab the whole table.",
+    he: {
+      title: "ציור פורים",
+      label: "ציור\nפורים",
+      blurb: "משחק ציור וניחוש לכמה שחקנים, מלא במילים מהמגילה. תביאו את כל השולחן.",
+    },
     url: "",
     repo: "https://github.com/Y2JCPA/Purim-Pictionary",
     emoji: "🖍️",
@@ -94,8 +118,13 @@ window.JB_GAMES = [
   {
     id: "daf-yomi",
     title: "Daf Yomi Visual Guides",
-    hebrew: "דף יומי",
+    label: "DAF YOMI",
     blurb: "Slide-by-slide visual guides to the daily daf of Talmud Bavli, built from Sefaria sources.",
+    he: {
+      title: "דף יומי: מדריכים חזותיים",
+      label: "דף יומי",
+      blurb: "מדריכים חזותיים, שקופית אחרי שקופית, לדף היומי בתלמוד הבבלי, על בסיס מקורות מספריא.",
+    },
     url: "https://y2jcpa.github.io/daf-yomi/",
     repo: "https://github.com/Y2JCPA/daf-yomi",
     emoji: "📖",
@@ -109,8 +138,13 @@ window.JB_GAMES = [
   {
     id: "mishneh-torah",
     title: "Mishneh Torah Study Guides",
-    hebrew: "משנה תורה",
+    label: "RAMBAM",
     blurb: "All 14 books of the Rambam, about 1,000 perakim, each with visual slides, Hebrew and English, and a quiz.",
+    he: {
+      title: "משנה תורה: מדריכי לימוד",
+      label: "רמב״ם",
+      blurb: "כל 14 הספרים של הרמב״ם, כאלף פרקים, ולכל פרק שקופיות, עברית ואנגלית וחידון.",
+    },
     url: "https://y2jcpa.github.io/mishneh-torah/",
     repo: "https://github.com/Y2JCPA/mishneh-torah",
     emoji: "📜",
@@ -124,8 +158,13 @@ window.JB_GAMES = [
   {
     id: "yerushalmi-bava-kamma",
     title: "Yerushalmi Bava Kamma",
-    hebrew: "ירושלמי בבא קמא",
+    label: "YERUSHALMI",
     blurb: "Visual study guides for Talmud Yerushalmi, Masechet Bava Kamma.",
+    he: {
+      title: "ירושלמי בבא קמא",
+      label: "ירושלמי",
+      blurb: "מדריכי לימוד חזותיים לתלמוד ירושלמי, מסכת בבא קמא.",
+    },
     url: "https://y2jcpa.github.io/yerushalmi-bava-kamma/",
     repo: "https://github.com/Y2JCPA/yerushalmi-bava-kamma",
     emoji: "🐂",
@@ -139,7 +178,13 @@ window.JB_GAMES = [
   {
     id: "chavalalhazman",
     title: "ChavalAlHaZman",
+    label: "CHAVAL AL\nHAZMAN",
     blurb: "Doomscrolling, l'sheim Shamayim. A feed of posts from generations of Torah personalities, with sources.",
+    he: {
+      title: "חבל על הזמן",
+      label: "חבל על\nהזמן",
+      blurb: "גלילה אינסופית לשם שמיים. פיד של פוסטים מדמויות תורניות לאורך הדורות, עם מקורות.",
+    },
     url: "",
     repo: "https://github.com/Y2JCPA/chavalalhazman",
     emoji: "📱",
@@ -153,7 +198,13 @@ window.JB_GAMES = [
   {
     id: "aliyah-trail",
     title: "The Aliyah Trail",
+    label: "ALIYAH\nTRAIL",
     blurb: "Can you survive taxes, bureaucracy and Israeli banks? An Oregon Trail-style game for Americans making Aliyah.",
+    he: {
+      title: "שביל העלייה",
+      label: "שביל\nהעלייה",
+      blurb: "תצליחו לשרוד מיסים, בירוקרטיה ובנקים ישראליים? משחק בסגנון Oregon Trail לאמריקאים שעושים עלייה.",
+    },
     url: "https://y2jcpa.github.io/Aliyah-trail/",
     repo: "https://github.com/Y2JCPA/Aliyah-trail",
     emoji: "🇮🇱",
@@ -167,7 +218,13 @@ window.JB_GAMES = [
   {
     id: "zoobuddies",
     title: "ZooBuddies",
+    label: "ZOO\nBUDDIES",
     blurb: "A family companion for the Jerusalem Biblical Zoo: live visitor reports and a collectible buddy game. English and Hebrew.",
+    he: {
+      title: "זו־באדיז",
+      label: "זו־באדיז",
+      blurb: "אפליקציה משפחתית לגן החיות התנ״כי בירושלים: דיווחים חיים ממבקרים ומשחק אספנות של חברים. בעברית ובאנגלית.",
+    },
     url: "https://zoobuddies.vercel.app",
     repo: "",
     emoji: "🦁",
@@ -181,7 +238,13 @@ window.JB_GAMES = [
   {
     id: "grow-a-garden",
     title: "Grow a Garden 3D",
+    label: "GROW A\nGARDEN",
     blurb: "A blocky 3D gardening game. Plant seeds, hatch pets, sell your harvest and ride out the weather.",
+    he: {
+      title: "מגדלים גינה",
+      label: "מגדלים\nגינה",
+      blurb: "משחק גינון בתלת־ממד. שותלים זרעים, בוקעים חיות מחמד, מוכרים את היבול ושורדים את מזג האוויר.",
+    },
     url: "https://y2jcpa.github.io/grow-a-garden/",
     repo: "https://github.com/Y2JCPA/grow-a-garden",
     emoji: "🌱",
@@ -195,7 +258,9 @@ window.JB_GAMES = [
   {
     id: "torah-champions",
     title: "Torah Champions",
+    label: "TORAH\nCHAMPS",
     blurb: "In the workshop. Check back soon!",
+    he: { title: "אלופי תורה", label: "אלופי\nתורה", blurb: "בסדנה. תבדקו שוב בקרוב!" },
     url: "",
     repo: "",
     emoji: "🏆",
@@ -209,8 +274,9 @@ window.JB_GAMES = [
   {
     id: "tehara",
     title: "Tehara",
-    hebrew: "טהרה",
+    label: "TEHARA",
     blurb: "In the workshop. Check back soon!",
+    he: { title: "טהרה", label: "טהרה", blurb: "בסדנה. תבדקו שוב בקרוב!" },
     url: "",
     repo: "",
     emoji: "💧",

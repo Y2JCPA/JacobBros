@@ -2,92 +2,98 @@
  * The five Jacob Bros.
  *
  * Each brother owns his own entry: name, bio, fun facts, and his pixel look.
- * The `id` is what games use in their `by: [...]` list, so pick it once and
- * keep it (your first name in lowercase works well).
+ * `he` holds the Hebrew version of the text fields.
+ * The `id` is what games use in their `by: [...]` list, so keep it stable.
  *
- * After changing a `look`, redraw the sprites with:  node tools/make-bros.js
+ * After changing a `look`, redraw the sprites with:  node tools/make-bros.js <id>
  *
  * Look options:
- *   body:      "short" | "tall"
- *   hat:       "cap" (with your letter on it) | "kippah" | "fedora"
- *   letter:    the letter on your cap
- *   facial:    "clean" | "mustache" | "beard" | "full"
+ *   body:      "short" | "muscular" | "wide" | "tall" | "lanky"
+ *   hat:       "cap" (with `letter` on it) | "kippah" | "fedora"
+ *   facial:    "clean" | "mustache" | "zigzag" | "pointy" | "beard" | "full"
+ *   chin:      "normal" | "big" | "pointy"
  *   hairStyle: "short" | "long" | "curly"
  *   glasses, peyos: true / false
- *   handDrawn: true if you drew your own PNG at `sprite` (the tool skips you)
+ *   handDrawn: true if you drew your own PNGs (the tool then skips you)
  *   colors:    cap, shirt, overalls, shoes, skin, hair, and optional
- *              beard, buttons, glasses, hat, band. Any hex color.
+ *              letter, nose, beard, buttons, glasses, hat, band. Hex colors.
  */
 
 window.JB_BROTHERS = [
   {
-    id: "bro1",
-    name: "Bro #1",
+    id: "yitzi",
+    name: "Yitzi",
     title: "Player 1",
-    bio: "Bio coming soon. Edit data/brothers.js to tell everyone who you are and what you build.",
-    funFacts: ["Favorite holiday: ???", "Favorite sefer: ???"],
+    bio: "Bio coming soon.",
+    funFacts: [],
     github: "",
-    sprite: "assets/bros/bro1.png",
+    he: { name: "איצי", title: "שחקן 1", bio: "ביוגרפיה בקרוב.", funFacts: [] },
+    sprite: "assets/bros/yitzi.png",
     look: {
-      body: "short", hat: "cap", letter: "1", facial: "mustache", hairStyle: "short",
-      glasses: false, peyos: false,
+      body: "short", hat: "cap", letter: "Y", facial: "mustache", hairStyle: "short",
       colors: { cap: "#e52521", shirt: "#e52521", overalls: "#2a4ec8", shoes: "#6b3a12", skin: "#f6c193", hair: "#4a2a14" },
     },
   },
   {
-    id: "bro2",
-    name: "Bro #2",
+    id: "ovadiah",
+    name: "Ovadiah",
     title: "Player 2",
-    bio: "Bio coming soon. Edit data/brothers.js to tell everyone who you are and what you build.",
-    funFacts: ["Favorite holiday: ???", "Favorite sefer: ???"],
+    bio: "Bio coming soon.",
+    funFacts: [],
     github: "",
-    sprite: "assets/bros/bro2.png",
+    he: { name: "עובדיה", title: "שחקן 2", bio: "ביוגרפיה בקרוב.", funFacts: [] },
+    sprite: "assets/bros/ovadiah.png",
     look: {
-      body: "tall", hat: "cap", letter: "2", facial: "beard", hairStyle: "short",
-      glasses: true, peyos: false,
-      colors: { cap: "#2fa52f", shirt: "#2fa52f", overalls: "#23306e", shoes: "#4a2a10", skin: "#eab485", hair: "#241812" },
+      body: "tall", hat: "cap", letter: "O", facial: "mustache", hairStyle: "short",
+      colors: { cap: "#2fa52f", shirt: "#2fa52f", overalls: "#2340a8", shoes: "#6b3a12", skin: "#f3c091", hair: "#3d2414" },
     },
   },
   {
-    id: "bro3",
-    name: "Bro #3",
+    id: "yaacov",
+    name: "Yaacov",
     title: "Player 3",
-    bio: "Bio coming soon. Edit data/brothers.js to tell everyone who you are and what you build.",
-    funFacts: ["Favorite holiday: ???", "Favorite sefer: ???"],
+    bio: "Bio coming soon.",
+    funFacts: [],
     github: "",
-    sprite: "assets/bros/bro3.png",
+    he: { name: "יעקב", title: "שחקן 3", bio: "ביוגרפיה בקרוב.", funFacts: [] },
+    sprite: "assets/bros/yaacov.png",
     look: {
-      body: "short", hat: "cap", letter: "3", facial: "clean", hairStyle: "curly",
-      glasses: false, peyos: true,
-      colors: { cap: "#2f7fe8", shirt: "#2f7fe8", overalls: "#7a4a22", shoes: "#2b1a0e", skin: "#f8cfa6", hair: "#9a5524" },
+      body: "wide", hat: "cap", letter: "Y", facial: "zigzag", chin: "big", hairStyle: "short",
+      colors: {
+        cap: "#f8d030", letter: "#2a4ec8", shirt: "#f8d030", overalls: "#7b3fb5", shoes: "#2f8a3a",
+        skin: "#f6c193", nose: "#f2a0b4", hair: "#4a2a14", buttons: "#ffffff",
+      },
     },
   },
   {
-    id: "bro4",
-    name: "Bro #4",
+    id: "shimshon",
+    name: "Shimshon",
     title: "Player 4",
-    bio: "Bio coming soon. Edit data/brothers.js to tell everyone who you are and what you build.",
-    funFacts: ["Favorite holiday: ???", "Favorite sefer: ???"],
+    bio: "Bio coming soon.",
+    funFacts: [],
     github: "",
-    sprite: "assets/bros/bro4.png",
+    he: { name: "שמשון", title: "שחקן 4", bio: "ביוגרפיה בקרוב.", funFacts: [] },
+    sprite: "assets/bros/shimshon.png",
     look: {
-      body: "tall", hat: "cap", letter: "4", facial: "full", hairStyle: "short",
-      glasses: false, peyos: false,
-      colors: { cap: "#8b3fd6", shirt: "#8b3fd6", overalls: "#2b2b38", shoes: "#4a2a10", skin: "#e2a878", hair: "#2a1a10" },
+      body: "lanky", hat: "cap", letter: "S", facial: "pointy", chin: "pointy", hairStyle: "short",
+      colors: {
+        cap: "#6a2fa6", letter: "#f8c020", shirt: "#6a2fa6", overalls: "#1f1d33", shoes: "#f08a1c",
+        skin: "#f3c091", hair: "#2f1c10", buttons: "#f8c020",
+      },
     },
   },
   {
-    id: "bro5",
-    name: "Bro #5",
+    id: "levi",
+    name: "Levi",
     title: "Player 5",
-    bio: "Bio coming soon. Edit data/brothers.js to tell everyone who you are and what you build.",
-    funFacts: ["Favorite holiday: ???", "Favorite sefer: ???"],
+    bio: "Bio coming soon.",
+    funFacts: [],
     github: "",
-    sprite: "assets/bros/bro5.png",
+    he: { name: "לוי", title: "שחקן 5", bio: "ביוגרפיה בקרוב.", funFacts: [] },
+    sprite: "assets/bros/levi.png",
     look: {
-      body: "short", hat: "cap", letter: "5", facial: "mustache", hairStyle: "short",
-      glasses: true, peyos: false,
-      colors: { cap: "#f39a1e", shirt: "#f39a1e", overalls: "#2a4ec8", shoes: "#6b3a12", skin: "#f3c49a", hair: "#6b3b1a" },
+      body: "muscular", hat: "cap", letter: "L", facial: "clean", hairStyle: "short",
+      colors: { cap: "#1f6fe0", shirt: "#1f6fe0", overalls: "#d12b2b", shoes: "#5a3010", skin: "#f3c091", hair: "#3d2414" },
     },
   },
 ];
