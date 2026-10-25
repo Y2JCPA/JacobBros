@@ -45,8 +45,8 @@
 
     // Kotel plaza: spawn, welcome sign, two fact blocks
     signs.push({ x: 5 * T, w: 96, text: "sign.welcome" });
-    addBlock(13, G - 4, { kind: "fact" });
-    addBlock(14, G - 4, { kind: "fact" });
+    addBlock(13, G - 5, { kind: "fact" });
+    addBlock(14, G - 5, { kind: "fact" });
     let cx = 19;
 
     ZONES.forEach(function (zone) {
@@ -59,19 +59,19 @@
         const kind = game.status === "live" ? "item" : "soon";
         const pattern = i % 3;
         if (pattern === 0) {
-          addBlock(cx + 3, G - 4, { kind: kind, game: game });
-          if (i % 2 === 0) { addBlock(cx + 2, G - 4, { kind: "fact" }); addBlock(cx + 4, G - 4, { kind: "fact" }); }
+          addBlock(cx + 3, G - 5, { kind: kind, game: game });
+          if (i % 2 === 0) { addBlock(cx + 2, G - 5, { kind: "fact" }); addBlock(cx + 4, G - 5, { kind: "fact" }); }
           cx += 8;
         } else if (pattern === 1) {
           // a raised stone terrace to jump onto, with the block above it
           for (let x = cx + 1; x <= cx + 5; x++) { stone(x, G - 2); stone(x, G - 1); }
-          addBlock(cx + 3, G - 6, { kind: kind, game: game });
+          addBlock(cx + 3, G - 7, { kind: kind, game: game });
           cx += 9;
         } else {
           stone(cx + 1, G - 1);
           stone(cx + 2, G - 1); stone(cx + 2, G - 2);
           for (let x = cx + 3; x <= cx + 4; x++) for (let y = G - 3; y <= G - 1; y++) stone(x, y);
-          addBlock(cx + 4, G - 7, { kind: kind, game: game });
+          addBlock(cx + 4, G - 8, { kind: kind, game: game });
           cx += 9;
         }
       });
@@ -111,6 +111,13 @@
     sheets[b.id] = img;
   });
 
+  // Frame size of a brother's side sheet (from data/sprites.js, written by tools/make-bros.js)
+  function sheetOf(b) {
+    const s = (window.JB_SPRITES || {})[b.id];
+    const side = s ? s.side : [23, 33, 3];
+    return { fw: side[0], fh: side[1], count: side[2], anchor: side[2] >= 6 ? 14 : 11 };
+  }
+
   // ---------------- state ----------------
   let mode = "select";          // "select" | "play"
   let paused = false;
@@ -149,7 +156,7 @@
   // ---------------- player ----------------
   function placeAt(x) {
     const img = sheets[bro.id];
-    P.h = (img.naturalHeight || 33) - 3;
+    P.h = (img.naturalHeight || sheetOf(bro).fh) - 3;
     P.x = x; P.y = G * T - P.h; P.vx = 0; P.vy = 0; P.onGround = true;
     cam = clampCam(P.x + P.w / 2 - viewW * 0.42);
   }
@@ -293,17 +300,23 @@
   function drawPlayer(c) {
     const img = sheets[bro.id];
     if (!img.complete || !img.naturalWidth) return;
-    const fw = 23, fh = img.naturalHeight;
+    const sh = sheetOf(bro), fw = sh.fw, fh = img.naturalHeight;
     let frame = 0;
-    if (!P.onGround) frame = 2;
-    else if (P.walkT > 0) frame = Math.floor(P.walkT * 8) % 2 === 0 ? 1 : 0;
+    if (sh.count >= 6) {          // stand, walk 1-4, jump
+      if (!P.onGround) frame = 5;
+      else if (P.walkT > 0) frame = 1 + (Math.floor(P.walkT * 9) % 4);
+    } else {                      // stand, walk, jump
+      if (!P.onGround) frame = 2;
+      else if (P.walkT > 0) frame = Math.floor(P.walkT * 8) % 2 === 0 ? 1 : 0;
+    }
     const sy = Math.round(P.y + P.h - (fh - 1));
     const cxp = Math.round(P.x + P.w / 2 - c);
     if (P.face > 0) {
-      ctx.drawImage(img, frame * fw, 0, fw, fh, cxp - 11, sy, fw, fh);
+      ctx.drawImage(img, frame * fw, 0, fw, fh, cxp - sh.anchor, sy, fw, fh);
     } else {
       ctx.save();
-      ctx.translate(cxp + 12, sy);
+      ctx.translate(cxp - (fw - sh.anchor), sy);
+      ctx.translate(fw, 0);
       ctx.scale(-1, 1);
       ctx.drawImage(img, frame * fw, 0, fw, fh, 0, 0, fw, fh);
       ctx.restore();

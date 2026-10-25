@@ -8,7 +8,7 @@ Under the game there's a plain list of every world, filterable by **holiday**, *
 
 **Controls:** ← → (or A/D) to move and Space (or ↑) to jump on a computer. On phones and tablets there's a joystick and a JUMP button.
 
-**Live site:** https://y2jcpa.github.io/JacobBros/ (once GitHub Pages is turned on, see below)
+**Live site:** https://y2jcpa.github.io/JacobBros/
 
 ## What's here
 
@@ -21,7 +21,7 @@ Under the game there's a plain list of every world, filterable by **holiday**, *
 | `js/app.js` | The list of worlds and the Meet the Bros cards. |
 | `data/games.js` | **Every game, study guide and app.** Add yours here. |
 | `data/brothers.js` | **The five bros**: name, bio, fun facts, pixel look. |
-| `assets/bros/` | The bros' sprites: a front portrait and side-view walk/jump frames, drawn by `tools/make-bros.js`. |
+| `assets/bros/` | The bros' sprites: a front portrait and six side-view game frames, drawn by `tools/make-bros.js` (sizes in `data/sprites.js`). |
 | `badge.js` | The "More games" button that games include to link back here. |
 | `assets/shots/` | Card thumbnails. `tools/screenshot.js` regenerates them. |
 | `tools/check-data.js` | Checks the data files for mistakes. CI runs it on every pull request. |
