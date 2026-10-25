@@ -123,9 +123,10 @@ button { font: inherit; color: inherit; }
   box-shadow: inset 3px 3px 0 0 var(--gold-dark);
   transform: translate(3px, 3px);
 }
-.chip-sprite { width: 16px; display: inline-block; }
+.chip-sprite { display: inline-block; }
+.chip-sprite .sprite { height: 22px; width: auto; }
 
-.sprite { display: block; width: 100%; height: auto; }
+.sprite { display: block; width: 100%; height: auto; image-rendering: pixelated; -webkit-user-drag: none; user-select: none; }
 
 /* ---------- HUD ---------- */
 
@@ -312,7 +313,7 @@ body > .hud { position: absolute; left: 0; right: 0; }
 }
 .bro {
   position: relative;
-  width: clamp(52px, 15vw, 104px);
+  width: 46px; /* 2x the 23px sprite; bigger screens use 3x and 4x */
   padding: 0; border: 0; background: none; cursor: pointer;
   display: flex; flex-direction: column; align-items: center;
   animation: idle 1.4s steps(1) infinite;
@@ -473,8 +474,8 @@ main { padding: 0 16px; }
   display: flex; justify-content: space-between; align-items: center; gap: 10px;
   padding: 10px 16px 18px;
 }
-.card-bros { display: flex; gap: 4px; }
-.by-bro { width: 28px; padding: 0; border: 0; background: none; cursor: pointer; }
+.card-bros { display: flex; align-items: flex-end; gap: 6px; }
+.by-bro { width: 23px; align-self: flex-end; padding: 0; border: 0; background: none; cursor: pointer; }
 .by-bro:hover { transform: translateY(-3px); }
 .btn-play { background: var(--green); box-shadow:
   0 -4px 0 0 var(--ink), 0 4px 0 0 var(--ink), -4px 0 0 0 var(--ink), 4px 0 0 0 var(--ink),
@@ -507,7 +508,8 @@ main { padding: 0 16px; }
 }
 .bro-card:hover .bro-card-sprite { transform: translateY(-6px); }
 .bro-card-sprite {
-  width: 80px; padding: 10px 10px 0;
+  width: 69px; height: 117px; padding: 10px 12px 0;
+  display: flex; align-items: flex-end;
   background: var(--sky);
   border: 3px solid var(--ink);
   border-bottom: 10px solid var(--brick);
@@ -541,7 +543,8 @@ main { padding: 0 16px; }
 }
 .bro-dialog-head { display: flex; gap: 18px; align-items: center; margin-right: 40px; }
 .bro-dialog-sprite {
-  flex: none; width: 72px; padding: 8px 8px 0;
+  flex: none; width: 69px; height: 117px; padding: 8px 10px 0;
+  display: flex; align-items: flex-end;
   background: var(--sky); border: 3px solid var(--ink); border-bottom: 10px solid var(--brick);
   box-sizing: content-box;
 }
@@ -594,11 +597,20 @@ main { padding: 0 16px; }
 
 /* ---------- responsive ---------- */
 
+@media (min-width: 420px) {
+  .bro { width: 69px; }
+}
+
 @media (min-width: 720px) {
+  .bro { width: 92px; }
   .hud-label { font-size: 11px; }
   .hud-value { font-size: 14px; }
   .bro-name { font-size: 10px; }
   .p3 { display: block; }
+}
+
+@media (min-width: 1000px) {
+  .bro { width: 115px; }
 }
 
 @media (max-width: 520px) {
@@ -609,7 +621,7 @@ main { padding: 0 16px; }
   .bros-stage { margin-top: 56px; }
   .grid { grid-template-columns: 1fr; }
   .bro-cards { grid-template-columns: 1fr 1fr; gap: 18px; }
-  .bro-card-sprite { width: 60px; }
+  .bro-card-sprite { width: 46px; height: 78px; }
   .bro-card-name { font-size: 11px; }
   .pipe { width: 56px; }
 }

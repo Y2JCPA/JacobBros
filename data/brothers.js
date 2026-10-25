@@ -5,10 +5,18 @@
  * The `id` is what games use in their `by: [...]` list, so pick it once and
  * keep it (your first name in lowercase works well).
  *
+ * After changing a `look`, redraw the sprites with:  node tools/make-bros.js
+ *
  * Look options:
- *   hat:     "kippah" | "fedora" | "cap"
- *   beard, glasses, peyos: true / false
- *   colors:  any CSS hex color
+ *   body:      "short" | "tall"
+ *   hat:       "cap" (with your letter on it) | "kippah" | "fedora"
+ *   letter:    the letter on your cap
+ *   facial:    "clean" | "mustache" | "beard" | "full"
+ *   hairStyle: "short" | "long" | "curly"
+ *   glasses, peyos: true / false
+ *   handDrawn: true if you drew your own PNG at `sprite` (the tool skips you)
+ *   colors:    cap, shirt, overalls, shoes, skin, hair, and optional
+ *              beard, buttons, glasses, hat, band. Any hex color.
  */
 
 window.JB_BROTHERS = [
@@ -19,11 +27,11 @@ window.JB_BROTHERS = [
     bio: "Bio coming soon. Edit data/brothers.js to tell everyone who you are and what you build.",
     funFacts: ["Favorite holiday: ???", "Favorite sefer: ???"],
     github: "",
+    sprite: "assets/bros/bro1.png",
     look: {
-      hat: "kippah", hatColor: "#1d3fbb",
-      hair: "#3b2314", skin: "#f2c08a",
-      shirt: "#e52521", pants: "#1d3fbb", shoes: "#5a2d0c",
-      beard: true, glasses: false, peyos: false,
+      body: "short", hat: "cap", letter: "1", facial: "mustache", hairStyle: "short",
+      glasses: false, peyos: false,
+      colors: { cap: "#e52521", shirt: "#e52521", overalls: "#2a4ec8", shoes: "#6b3a12", skin: "#f6c193", hair: "#4a2a14" },
     },
   },
   {
@@ -33,11 +41,11 @@ window.JB_BROTHERS = [
     bio: "Bio coming soon. Edit data/brothers.js to tell everyone who you are and what you build.",
     funFacts: ["Favorite holiday: ???", "Favorite sefer: ???"],
     github: "",
+    sprite: "assets/bros/bro2.png",
     look: {
-      hat: "fedora", hatColor: "#111111",
-      hair: "#1a1a1a", skin: "#e8b07c",
-      shirt: "#2e9b2e", pants: "#24365c", shoes: "#2b1a0e",
-      beard: true, glasses: true, peyos: false,
+      body: "tall", hat: "cap", letter: "2", facial: "beard", hairStyle: "short",
+      glasses: true, peyos: false,
+      colors: { cap: "#2fa52f", shirt: "#2fa52f", overalls: "#23306e", shoes: "#4a2a10", skin: "#eab485", hair: "#241812" },
     },
   },
   {
@@ -47,11 +55,11 @@ window.JB_BROTHERS = [
     bio: "Bio coming soon. Edit data/brothers.js to tell everyone who you are and what you build.",
     funFacts: ["Favorite holiday: ???", "Favorite sefer: ???"],
     github: "",
+    sprite: "assets/bros/bro3.png",
     look: {
-      hat: "kippah", hatColor: "#f8b800",
-      hair: "#8a4b1c", skin: "#f5c99a",
-      shirt: "#2f6fe0", pants: "#3a3a3a", shoes: "#5a2d0c",
-      beard: false, glasses: false, peyos: true,
+      body: "short", hat: "cap", letter: "3", facial: "clean", hairStyle: "curly",
+      glasses: false, peyos: true,
+      colors: { cap: "#2f7fe8", shirt: "#2f7fe8", overalls: "#7a4a22", shoes: "#2b1a0e", skin: "#f8cfa6", hair: "#9a5524" },
     },
   },
   {
@@ -61,11 +69,11 @@ window.JB_BROTHERS = [
     bio: "Bio coming soon. Edit data/brothers.js to tell everyone who you are and what you build.",
     funFacts: ["Favorite holiday: ???", "Favorite sefer: ???"],
     github: "",
+    sprite: "assets/bros/bro4.png",
     look: {
-      hat: "cap", hatColor: "#e52521",
-      hair: "#2a1a10", skin: "#e0a872",
-      shirt: "#f8d030", pants: "#1d3fbb", shoes: "#ffffff",
-      beard: false, glasses: true, peyos: false,
+      body: "tall", hat: "cap", letter: "4", facial: "full", hairStyle: "short",
+      glasses: false, peyos: false,
+      colors: { cap: "#8b3fd6", shirt: "#8b3fd6", overalls: "#2b2b38", shoes: "#4a2a10", skin: "#e2a878", hair: "#2a1a10" },
     },
   },
   {
@@ -75,11 +83,11 @@ window.JB_BROTHERS = [
     bio: "Bio coming soon. Edit data/brothers.js to tell everyone who you are and what you build.",
     funFacts: ["Favorite holiday: ???", "Favorite sefer: ???"],
     github: "",
+    sprite: "assets/bros/bro5.png",
     look: {
-      hat: "kippah", hatColor: "#ffffff",
-      hair: "#c46a2a", skin: "#f7d0a8",
-      shirt: "#8a3fd1", pants: "#24365c", shoes: "#2b1a0e",
-      beard: false, glasses: false, peyos: false,
+      body: "short", hat: "cap", letter: "5", facial: "mustache", hairStyle: "short",
+      glasses: true, peyos: false,
+      colors: { cap: "#f39a1e", shirt: "#f39a1e", overalls: "#2a4ec8", shoes: "#6b3a12", skin: "#f3c49a", hair: "#6b3b1a" },
     },
   },
 ];

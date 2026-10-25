@@ -24,6 +24,10 @@
     });
   };
   const pad2 = function (n) { return n < 10 ? "0" + n : String(n); };
+  const sprite = function (b, alt) {
+    return '<img class="sprite sprite-' + esc(b.look && b.look.body || "short") + '" src="' + esc(b.sprite) +
+      '" alt="' + esc(alt || "") + '" draggable="false">';
+  };
 
   // ---- storage (per-visitor only, and optional) ----
   function load(key, fallback) {
@@ -79,7 +83,7 @@
     const stage = $("#bros-stage");
     stage.innerHTML = BROS.map(function (b, i) {
       return '<button class="bro" type="button" data-bro="' + esc(b.id) + '" style="--i:' + i + '">' +
-        window.JB_SPRITE(b.look) +
+        sprite(b) +
         '<span class="bro-name">' + esc(b.name) + "</span></button>";
     }).join("");
     stage.addEventListener("click", function (e) {
@@ -97,7 +101,7 @@
     $("#bro-cards").innerHTML = BROS.map(function (b) {
       const n = gamesBy(b.id).length;
       return '<button class="bro-card panel" type="button" data-bro="' + esc(b.id) + '">' +
-        '<span class="bro-card-sprite">' + window.JB_SPRITE(b.look) + "</span>" +
+        '<span class="bro-card-sprite">' + sprite(b) + "</span>" +
         '<span class="bro-card-text">' +
           '<span class="bro-card-title">' + esc(b.title) + "</span>" +
           '<span class="bro-card-name">' + esc(b.name) + "</span>" +
@@ -116,7 +120,7 @@
     const builds = gamesBy(id);
     $("#bro-dialog-body").innerHTML =
       '<div class="bro-dialog-head">' +
-        '<span class="bro-dialog-sprite">' + window.JB_SPRITE(b.look, { label: b.name }) + "</span>" +
+        '<span class="bro-dialog-sprite">' + sprite(b, b.name) + "</span>" +
         "<div>" +
           '<p class="bro-dialog-title">' + esc(b.title) + "</p>" +
           '<h3 id="bro-dialog-name" class="bro-dialog-name">' + esc(b.name) + "</h3>" +
@@ -191,7 +195,7 @@
     const credBros = BROS.filter(function (b) { return credited.has(b.id); });
     broGroup.hidden = credBros.length === 0;
     broGroup.innerHTML = chip("by", "", "All bros") + credBros.map(function (b) {
-      return chip("by", b.id, b.name, '<span class="chip-sprite">' + window.JB_SPRITE(b.look) + "</span>");
+      return chip("by", b.id, b.name, '<span class="chip-sprite">' + sprite(b) + "</span>");
     }).join("");
 
     document.querySelector(".filters").addEventListener("click", function (e) {
@@ -257,7 +261,7 @@
     const bros = (g.by || []).map(function (id) {
       const b = broById[id];
       return b ? '<button class="by-bro" type="button" data-bro="' + esc(b.id) + '" title="Built by ' + esc(b.name) + '">' +
-        window.JB_SPRITE(b.look) + '<span class="visually-hidden">Built by ' + esc(b.name) + "</span></button>" : "";
+        sprite(b) + '<span class="visually-hidden">Built by ' + esc(b.name) + "</span></button>" : "";
     }).join("");
     const typeTag = TAGS.types[g.type] ? TAGS.types[g.type].emoji : "";
 

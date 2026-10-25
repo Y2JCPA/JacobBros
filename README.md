@@ -13,6 +13,7 @@ The site is an original 8-bit world. It has the five bros as pixel characters, `
 | `index.html`, `css/`, `js/` | The site. Plain HTML/CSS/JS with no build step. |
 | `data/games.js` | **Every game, study guide and app.** Add yours here. |
 | `data/brothers.js` | **The five bros**: name, bio, fun facts, pixel look. |
+| `assets/bros/` | The bros' pixel sprites, drawn by `tools/make-bros.js`. |
 | `badge.js` | The "More games" button that games include to link back here. |
 | `assets/shots/` | Card thumbnails. `tools/screenshot.js` regenerates them. |
 | `tools/check-data.js` | Checks the data files for mistakes. CI runs it on every pull request. |

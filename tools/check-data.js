@@ -33,10 +33,25 @@ bros.forEach((b, i) => {
   broIds.add(b.id);
   for (const f of ["name", "title", "bio"]) if (!b[f]) err(where, `missing ${f}`);
   if (b.github && !/^[A-Za-z0-9-]+$/.test(b.github)) err(where, "github should be just the username, e.g. \"y2jcpa\"");
+  if (!b.sprite) err(where, "missing sprite (e.g. \"assets/bros/" + b.id + ".png\")");
+  else if (!fs.existsSync(path.join(root, b.sprite))) err(where, `sprite ${b.sprite} does not exist. Run: node tools/make-bros.js ${b.id}`);
   const look = b.look || {};
-  if (!["kippah", "fedora", "cap"].includes(look.hat)) err(where, 'look.hat must be "kippah", "fedora" or "cap"');
-  for (const c of ["hatColor", "hair", "skin", "shirt", "pants", "shoes"]) {
-    if (!isHex(look[c])) err(where, `look.${c} must be a hex color like "#e52521"`);
+  const oneOf = (field, options) => {
+    if (look[field] !== undefined && !options.includes(look[field])) err(where, `look.${field} must be one of: ${options.join(", ")}`);
+  };
+  oneOf("body", ["short", "tall"]);
+  oneOf("hat", ["cap", "kippah", "fedora"]);
+  oneOf("facial", ["clean", "mustache", "beard", "full"]);
+  oneOf("hairStyle", ["short", "long", "curly"]);
+  if (look.letter !== undefined && !/^[A-Z1-5]$/i.test(String(look.letter))) err(where, "look.letter must be one letter A-Z (or 1-5)");
+  if (!look.handDrawn) {
+    const colors = look.colors || {};
+    for (const c of ["cap", "shirt", "overalls", "shoes", "skin", "hair"]) {
+      if (!isHex(colors[c])) err(where, `look.colors.${c} must be a hex color like "#e52521"`);
+    }
+    for (const c of ["beard", "buttons", "glasses", "hat", "band"]) {
+      if (colors[c] !== undefined && !isHex(colors[c])) err(where, `look.colors.${c} must be a hex color like "#e52521"`);
+    }
   }
 });
 

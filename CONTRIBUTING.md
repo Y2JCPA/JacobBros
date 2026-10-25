@@ -8,14 +8,21 @@ Open `data/brothers.js` and find a placeholder (`bro1` … `bro5`). Then:
 
 1. **Change `id` once** to something short and lowercase, like your first name (`"yaakov"`). Games point to you by this id, so don't change it again later.
 2. Fill in `name`, `title` (a fun role, like `"Level Designer"`), `bio`, `funFacts` and `github` (your GitHub username, without the @).
-3. Design your pixel look:
+3. Design your pixel look in `look`. Short bros are Mario-sized and tall bros are Luigi-sized:
 
 | Field | Options |
 |---|---|
-| `hat` | `"kippah"`, `"fedora"` or `"cap"` |
-| `hatColor`, `hair`, `skin`, `shirt`, `pants`, `shoes` | any hex color, like `"#e52521"` |
-| `beard`, `glasses`, `peyos` | `true` or `false` |
-| `beardColor`, `bandColor` | optional: beard color if it differs from your hair, and the ribbon on a fedora |
+| `body` | `"short"` or `"tall"` |
+| `hat` | `"cap"` (with your `letter` on it), `"kippah"` or `"fedora"` |
+| `letter` | the letter on your cap |
+| `facial` | `"clean"`, `"mustache"`, `"beard"` or `"full"` |
+| `hairStyle` | `"short"`, `"long"` or `"curly"` |
+| `glasses`, `peyos` | `true` or `false` |
+| `colors` | `cap`, `shirt`, `overalls`, `shoes`, `skin`, `hair`, plus optional `beard`, `buttons`, `glasses`, `hat`, `band`. Use hex colors like `"#e52521"`. |
+
+4. Redraw your sprite with `node tools/make-bros.js <your-id>`. It saves `assets/bros/<your-id>.png`. Add `--preview preview.png` to get a big copy to look at.
+
+Want to draw yourself by hand instead? Save a PNG (about 23×33 pixels short, 23×39 tall, transparent background) at your `sprite` path and set `look.handDrawn: true`, so the tool won't overwrite it.
 
 Refresh the page to see yourself. Click your character to see your card.
 
