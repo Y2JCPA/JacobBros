@@ -8,7 +8,7 @@
  * After changing a `look`, redraw the sprites with:  node tools/make-bros.js <id>
  *
  * Look options:
- *   body:      "short" | "muscular" | "wide" | "tall" | "lanky"
+ *   body:      "short" | "muscular" | "wide" | "slim" (tall, thin) | "rounded" (tallest, fuller)
  *   hat:       "cap" (with `letter` on it) | "kippah" | "fedora"
  *   facial:    "clean" | "mustache" | "zigzag" | "pointy" | "beard" | "full"
  *   chin:      "normal" | "big" | "pointy"
@@ -30,7 +30,7 @@ window.JB_BROTHERS = [
     he: { name: "איצי", title: "שחקן 1", bio: "ביוגרפיה בקרוב.", funFacts: [] },
     sprite: "assets/bros/yitzi.png",
     look: {
-      body: "short", hat: "cap", letter: "Y", facial: "mustache", hairStyle: "short",
+      body: "short", hat: "cap", letter: "Y", facial: "beard", hairStyle: "short",
       colors: { cap: "#e52521", shirt: "#e52521", overalls: "#2a4ec8", shoes: "#6b3a12", skin: "#f6c193", hair: "#4a2a14" },
     },
   },
@@ -44,8 +44,8 @@ window.JB_BROTHERS = [
     he: { name: "עובדיה", title: "שחקן 2", bio: "ביוגרפיה בקרוב.", funFacts: [] },
     sprite: "assets/bros/ovadiah.png",
     look: {
-      body: "tall", hat: "cap", letter: "O", facial: "mustache", hairStyle: "short",
-      colors: { cap: "#2fa52f", shirt: "#2fa52f", overalls: "#2340a8", shoes: "#6b3a12", skin: "#f3c091", hair: "#3d2414" },
+      body: "slim", hat: "cap", letter: "O", facial: "mustache", hairStyle: "short",
+      colors: { cap: "#2fa52f", shirt: "#2fa52f", overalls: "#2340a8", shoes: "#6b3a12", skin: "#f3c091", hair: "#3d2414", beard: "#c3c7d0" },
     },
   },
   {
@@ -75,7 +75,7 @@ window.JB_BROTHERS = [
     he: { name: "שמשון", title: "שחקן 4", bio: "ביוגרפיה בקרוב.", funFacts: [] },
     sprite: "assets/bros/shimshon.png",
     look: {
-      body: "lanky", hat: "cap", letter: "S", facial: "pointy", chin: "pointy", hairStyle: "short",
+      body: "rounded", hat: "cap", letter: "S", facial: "beard", hairStyle: "short",
       colors: {
         cap: "#6a2fa6", letter: "#f8c020", shirt: "#6a2fa6", overalls: "#1f1d33", shoes: "#f08a1c",
         skin: "#f3c091", hair: "#2f1c10", buttons: "#f8c020",

@@ -41,7 +41,7 @@ bros.forEach((b, i) => {
   const oneOf = (field, options) => {
     if (look[field] !== undefined && !options.includes(look[field])) err(where, `look.${field} must be one of: ${options.join(", ")}`);
   };
-  oneOf("body", ["short", "muscular", "wide", "tall", "lanky"]);
+  oneOf("body", ["short", "muscular", "wide", "slim", "rounded", "tall", "lanky"]);
   oneOf("hat", ["cap", "kippah", "fedora"]);
   oneOf("facial", ["clean", "mustache", "zigzag", "pointy", "beard", "full"]);
   oneOf("chin", ["normal", "big", "pointy"]);

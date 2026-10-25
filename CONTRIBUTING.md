@@ -8,11 +8,11 @@ Open `data/brothers.js` and find your entry. Then:
 
 1. Your entry's `id` (`yitzi`, `ovadiah`, `yaacov`, `shimshon`, `levi`) is how games point to you, so leave it as it is.
 2. Fill in `name`, `title` (a fun role, like `"Level Designer"`), `bio`, `funFacts` and `github` (your GitHub username, without the @). Put the Hebrew versions in `he: { name, title, bio, funFacts }`.
-3. Design your pixel look in `look`. Short bros are Mario-sized and tall bros are Luigi-sized:
+3. Design your pixel look in `look`:
 
 | Field | Options |
 |---|---|
-| `body` | `"short"`, `"muscular"`, `"wide"`, `"tall"` or `"lanky"` |
+| `body` | `"short"`, `"muscular"`, `"wide"` (short builds), `"slim"` (tall and thin) or `"rounded"` (tallest, fuller) |
 | `hat` | `"cap"` (with your `letter` on it), `"kippah"` or `"fedora"` |
 | `letter` | the letter on your cap |
 | `facial` | `"clean"`, `"mustache"`, `"zigzag"`, `"pointy"`, `"beard"` or `"full"` |
@@ -21,9 +21,9 @@ Open `data/brothers.js` and find your entry. Then:
 | `glasses`, `peyos` | `true` or `false` |
 | `colors` | `cap`, `shirt`, `overalls`, `shoes`, `skin`, `hair`, plus optional `letter`, `nose`, `beard`, `buttons`, `glasses`, `hat`, `band`. Use hex colors like `"#e52521"`. |
 
-4. Redraw your sprites with `node tools/make-bros.js <your-id>`. It saves `assets/bros/<your-id>.png` (front portrait) and `assets/bros/<your-id>-side.png` (stand, walk and jump frames for the game). Add `--preview preview.png` to get a big copy to look at.
+4. Redraw your sprites with `node tools/make-bros.js <your-id>`. It saves `assets/bros/<your-id>.png` (front portrait), `assets/bros/<your-id>-side.png` (six game frames: stand, four walking steps, jump) and updates `data/sprites.js` with their sizes. Add `--preview preview.png` to get a big copy to look at.
 
-Want to draw yourself by hand instead? Save the two PNGs with transparent backgrounds: the portrait, and a side sheet of three 23-pixel-wide frames (stand, walk, jump) facing right. Then set `look.handDrawn: true` so the tool won't overwrite them.
+Want to draw yourself by hand instead? Save the two PNGs with transparent backgrounds: a 32-pixel-wide portrait, and a side sheet of 32-pixel-wide frames facing right (stand, walk 1-4, jump). Set `look.handDrawn: true` so the tool won't overwrite them, then run `node tools/make-bros.js` once to record their sizes.
 
 Refresh the page to see yourself. Click your character to see your card.
 

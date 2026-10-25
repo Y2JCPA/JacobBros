@@ -129,7 +129,7 @@ button { font: inherit; color: inherit; }
   transform: translate(3px, 3px);
 }
 .chip-sprite { display: inline-block; }
-.chip-sprite .sprite { height: 22px; width: auto; }
+.chip-sprite .sprite { height: 24px; width: auto; }
 
 .sprite { display: block; width: 100%; height: auto; image-rendering: pixelated; -webkit-user-drag: none; user-select: none; }
 
@@ -236,7 +236,7 @@ button { font: inherit; color: inherit; }
   display: flex; flex-direction: column; align-items: center; gap: 8px;
   padding: 8px 4px 0; border: 0; background: none; cursor: pointer;
 }
-.pick-sprite { width: 46px; display: block; transition: transform .1s steps(2); }
+.pick-sprite { width: 64px; display: block; transition: transform .1s steps(2); }
 .pick-bro:hover .pick-sprite, .pick-bro:focus-visible .pick-sprite { transform: translateY(-6px); }
 .pick-name {
   font-family: var(--font-pixel); font-size: 9px; line-height: 1.2;
@@ -287,7 +287,7 @@ button { font: inherit; color: inherit; }
   background: var(--paper); border: 3px solid var(--ink); box-shadow: 3px 3px 0 0 var(--ink);
   cursor: pointer;
 }
-.change-bro .sprite { width: 23px; }
+.change-bro .sprite { width: 32px; }
 .change-bro:hover { background: var(--gold-light); }
 .zone-tabs {
   pointer-events: auto;
@@ -467,7 +467,7 @@ main { padding: 0 16px; border-top: 4px solid var(--ink); }
 .card-blurb { margin: 10px 0 12px; font-size: 17px; }
 .card-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 16px 18px; }
 .card-bros { display: flex; align-items: flex-end; gap: 6px; }
-.by-bro { width: 23px; align-self: flex-end; padding: 0; border: 0; background: none; cursor: pointer; }
+.by-bro { width: 32px; align-self: flex-end; padding: 0; border: 0; background: none; cursor: pointer; }
 .by-bro:hover { transform: translateY(-3px); }
 
 .empty { padding: 28px; text-align: center; margin: 0 4px; }
@@ -483,7 +483,7 @@ main { padding: 0 16px; border-top: 4px solid var(--ink); }
 }
 .bro-card:hover .bro-card-sprite { transform: translateY(-6px); }
 .bro-card-sprite, .bro-dialog-sprite {
-  width: 69px; height: 130px; padding: 10px 12px 0;
+  width: 64px; height: 104px; padding: 10px 12px 0;
   display: flex; align-items: flex-end;
   background: linear-gradient(var(--sky) 70%, #d2e3ec);
   border: 3px solid var(--ink);
@@ -566,11 +566,11 @@ html[lang="he"] .footer-title, html[lang="he"] .card-next::before { font-size: 1
 @media (min-width: 720px) {
   .hud-label { font-size: 11px; }
   .hud-value { font-size: 14px; }
-  .pick-sprite { width: 69px; }
+  .pick-sprite { width: 96px; }
   .pick-name { font-size: 10px; }
 }
 @media (min-height: 820px) and (min-width: 900px) {
-  .pick-sprite { width: 92px; }
+  .pick-sprite { width: 128px; }
 }
 @media (max-width: 520px) {
   body { font-size: 17px; }
@@ -578,12 +578,12 @@ html[lang="he"] .footer-title, html[lang="he"] .card-next::before { font-size: 1
   .howto li { font-size: 14px; padding: 5px 8px; }
   .grid { grid-template-columns: 1fr; }
   .bro-cards { grid-template-columns: 1fr 1fr; gap: 18px; }
-  .bro-card-sprite { width: 46px; height: 88px; }
+  .bro-card-sprite { width: 64px; height: 104px; }
   .bro-card-name { font-size: 11px; }
   .ingame { top: 58px; }
   .change-bro { padding: 4px; }
   .change-bro span { display: none; }
-  .change-bro .sprite { width: 18px; }
+  .change-bro .sprite { width: 24px; }
   .zone-tabs { inset-inline-start: 56px; max-width: none; }
   .toast { top: 108px; font-size: 15px; }
 }
