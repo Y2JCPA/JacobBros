@@ -202,7 +202,10 @@
     lang = next;
     save("lang", lang);
     const p = new URLSearchParams(location.search);
-    if (p.has("lang")) { p.set("lang", lang); history.replaceState(null, "", location.pathname + "?" + p + location.hash); }
+    if (p.has("lang")) {
+      p.set("lang", lang);
+      try { history.replaceState(null, "", location.pathname + "?" + p + location.hash); } catch (e) { /* sandboxed frame */ }
+    }
     applyStatic();
     renderHud();
     document.dispatchEvent(new CustomEvent("jb:lang", { detail: lang }));

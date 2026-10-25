@@ -135,7 +135,7 @@
     const p = new URLSearchParams(location.search);
     Object.keys(state).forEach(function (k) { if (state[k]) p.set(k, state[k]); else p.delete(k); });
     const qs = p.toString();
-    history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
+    try { history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash); } catch (e) { /* sandboxed frame */ }
   }
 
   // Search matches English and Hebrew text, whatever language is showing
