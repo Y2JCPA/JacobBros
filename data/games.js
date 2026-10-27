@@ -52,7 +52,7 @@ window.JB_GAMES = [
     type: "game",
     holidays: ["chanukah"],
     ages: ["family"],
-    by: [],
+    by: ["yaacov"],
     status: "live",
   },
   {
@@ -70,9 +70,9 @@ window.JB_GAMES = [
     emoji: "🏛️",
     image: "assets/shots/beit-hamikdash.jpg",
     type: "game",
-    holidays: ["year-round", "sukkot"],
+    holidays: ["year-round"],
     ages: ["kids", "family"],
-    by: [],
+    by: ["yaacov"],
     status: "live",
   },
   {
@@ -92,7 +92,7 @@ window.JB_GAMES = [
     type: "game",
     holidays: ["purim"],
     ages: ["kids"],
-    by: [],
+    by: ["yaacov"],
     status: "live",
   },
   {
@@ -112,7 +112,7 @@ window.JB_GAMES = [
     type: "game",
     holidays: ["purim"],
     ages: ["family"],
-    by: [],
+    by: ["yaacov"],
     status: "soon",
   },
   {
@@ -132,7 +132,7 @@ window.JB_GAMES = [
     type: "study",
     holidays: ["year-round"],
     ages: ["adults"],
-    by: [],
+    by: ["yaacov"],
     status: "live",
   },
   {
@@ -152,7 +152,7 @@ window.JB_GAMES = [
     type: "study",
     holidays: ["year-round"],
     ages: ["teens", "adults"],
-    by: [],
+    by: ["yaacov"],
     status: "live",
   },
   {
@@ -172,7 +172,7 @@ window.JB_GAMES = [
     type: "study",
     holidays: ["year-round"],
     ages: ["adults"],
-    by: [],
+    by: ["yaacov"],
     status: "live",
   },
   {
@@ -192,7 +192,7 @@ window.JB_GAMES = [
     type: "app",
     holidays: ["year-round", "yamim-noraim"],
     ages: ["teens", "adults"],
-    by: [],
+    by: ["yaacov"],
     status: "live",
   },
   {
@@ -212,7 +212,7 @@ window.JB_GAMES = [
     type: "game",
     holidays: ["year-round"],
     ages: ["adults"],
-    by: [],
+    by: ["yaacov"],
     status: "live",
   },
   {
@@ -232,7 +232,7 @@ window.JB_GAMES = [
     type: "app",
     holidays: ["year-round"],
     ages: ["kids", "family"],
-    by: [],
+    by: ["yaacov"],
     status: "live",
   },
   {
@@ -272,7 +272,7 @@ window.JB_GAMES = [
     type: "app",
     holidays: ["year-round"],
     ages: ["teens", "adults"],
-    by: [],
+    by: ["yaacov"],
     status: "live",
   },
   {
@@ -292,7 +292,7 @@ window.JB_GAMES = [
     type: "game",
     holidays: ["year-round"],
     ages: ["kids"],
-    by: [],
+    by: ["yaacov"],
     status: "soon",
   },
   {
@@ -308,7 +308,7 @@ window.JB_GAMES = [
     type: "game",
     holidays: ["year-round"],
     ages: ["family"],
-    by: [],
+    by: ["yaacov"],
     status: "soon",
   },
   {
@@ -328,7 +328,7 @@ window.JB_GAMES = [
     type: "game",
     holidays: ["chanukah", "year-round"],
     ages: ["teens", "adults"],
-    by: [],
+    by: ["shimshon"],
     status: "live",
   },
 ];
