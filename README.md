@@ -25,6 +25,7 @@ Under the game there's a plain list of every world, filterable by **holiday**, *
 | `badge.js` | The "More games" button that games include to link back here. |
 | `assets/shots/` | Card thumbnails. `tools/screenshot.js` regenerates them. |
 | `tools/check-data.js` | Checks the data files for mistakes. CI runs it on every pull request. |
+| `tools/stamp.js` | Stamps each script and stylesheet link in `index.html` with a content hash, so phones get updates right away. Run it before committing; CI checks it. |
 
 ## Run it locally
 

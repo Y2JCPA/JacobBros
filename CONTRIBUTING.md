@@ -58,10 +58,13 @@ To add a new holiday or age group, add it to `JB_TAGS` at the top of the same fi
 
 ```bash
 node tools/check-data.js     # catches typos, unknown tags, missing fields
+node tools/stamp.js          # updates the version stamps in index.html
 python3 -m http.server 8000  # look at it at http://localhost:8000
 ```
 
-Then open a pull request. The same check runs automatically on every PR.
+Then open a pull request. The same checks run automatically on every PR.
+
+**Why the stamps:** GitHub Pages lets browsers keep each file for 10 minutes. `tools/stamp.js` adds a short hash of each file to its link (`data/games.js?v=5d31f82f`), so as soon as the page updates, phones load the new files instead of a cached copy. CI fails with a reminder if you forget.
 
 ## Content guidelines
 

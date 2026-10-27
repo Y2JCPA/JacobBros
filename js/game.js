@@ -107,7 +107,7 @@
   const sheets = {};
   BROS.forEach(function (b) {
     const img = new Image();
-    img.src = b.sprite.replace(/\.png$/, "-side.png");
+    img.src = JB.spriteUrl(b, b.sprite.replace(/\.png$/, "-side.png"));
     sheets[b.id] = img;
   });
 
