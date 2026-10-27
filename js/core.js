@@ -250,8 +250,13 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   };
+  // Adds the sprite's version (from data/sprites.js) so a redrawn bro shows up right away
+  const spriteUrl = function (b, file) {
+    const s = (window.JB_SPRITES || {})[b.id];
+    return file + (s && s.v ? "?v=" + s.v : "");
+  };
   const spriteImg = function (b, alt) {
-    return '<img class="sprite sprite-' + esc((b.look && b.look.body) || "short") + '" src="' + esc(b.sprite) +
+    return '<img class="sprite sprite-' + esc((b.look && b.look.body) || "short") + '" src="' + esc(spriteUrl(b, b.sprite)) +
       '" alt="' + esc(alt || "") + '" draggable="false">';
   };
 
@@ -261,7 +266,7 @@
     facts: function () { return FACTS[lang]; },
     gematria: gematria, hebrewYearNumber: hebrewYearNumber,
     addCoin: addCoin, renderHud: renderHud,
-    load: load, save: save, esc: esc, spriteImg: spriteImg,
+    load: load, save: save, esc: esc, spriteImg: spriteImg, spriteUrl: spriteUrl,
     isTouch: function () {
       return window.matchMedia("(hover: none) and (pointer: coarse)").matches;
     },

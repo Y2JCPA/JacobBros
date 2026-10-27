@@ -10,7 +10,8 @@ window.JB_SPRITES = {
       32,
       40,
       6
-    ]
+    ],
+    "v": "286eb1e8"
   },
   "ovadiah": {
     "front": [
@@ -21,7 +22,8 @@ window.JB_SPRITES = {
       32,
       49,
       6
-    ]
+    ],
+    "v": "369e74f6"
   },
   "yaacov": {
     "front": [
@@ -32,7 +34,8 @@ window.JB_SPRITES = {
       32,
       39,
       6
-    ]
+    ],
+    "v": "ed646df9"
   },
   "shimshon": {
     "front": [
@@ -43,7 +46,8 @@ window.JB_SPRITES = {
       32,
       51,
       6
-    ]
+    ],
+    "v": "5eb530b6"
   },
   "levi": {
     "front": [
@@ -54,6 +58,7 @@ window.JB_SPRITES = {
       32,
       40,
       6
-    ]
+    ],
+    "v": "0dbeab5d"
   }
 };
