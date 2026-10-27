@@ -282,7 +282,7 @@ window.JB_GAMES = [
       blurb: "אחרי הקרבות של חנוכה, מוצאים במקדש את הכד היחיד של שמן טהור שנשאר חתום, ומביאים אותו למנורה בלי שהוא, או אתם, ייטמאו. הרפתקת הקלקה דרך כל סולם הטומאה.",
     },
     url: "https://y2jcpa.github.io/tehara/",
-    repo: "",
+    repo: "https://github.com/Y2JCPA/tehara",
     emoji: "🏺",
     image: "assets/shots/tehara.jpg",
     type: "game",
