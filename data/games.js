@@ -269,7 +269,7 @@ window.JB_GAMES = [
     repo: "",
     emoji: "💬",
     image: "assets/shots/whatsdaf.jpg",
-    type: "app",
+    type: "study",
     holidays: ["year-round"],
     ages: ["teens", "adults"],
     by: ["yaacov"],
